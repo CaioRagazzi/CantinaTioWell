@@ -36,5 +36,7 @@
     }
 
 </table>
-
+@Html.ActionLink("Enviar e-mail de cobrança", "EnvioDeEmailDeCobranca", new { id = Model.First().IdCliente })
+<br />
+<br />
 @Html.ActionLink("Retornar para relatório", "Index", "Administrativo")
