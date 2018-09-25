@@ -1,22 +1,20 @@
 ﻿@model IEnumerable<CantinaTioWell.Models.ClienteCompra>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Cliente Divida";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Módulo administrativo</h2>
-
-<h3>Relatório de clientes com dívida</h3>
+<h2>Lista de produtos do cliente com dívida</h2>
 
 <table class="table">
     <tr>
         <th>
             Cliente
         </th>
-        @*<th>
+        <th>
             Produto
-        </th>*@
+        </th>
         <th>
             Valor
         </th>
@@ -26,12 +24,11 @@
     {
         <tr>
             <td>
-                @*@Html.DisplayFor(modelItem => item.NomeCliente)*@
-                @Html.ActionLink(item.NomeCliente, "ListaClienteEProdutoEspecificoComDivida", new { id = item.IdCliente })
+                @Html.DisplayFor(modelItem => item.NomeCliente)
             </td>
-            @*<td>
+            <td>
                 @Html.DisplayFor(modelItem => item.NomeProduto)
-            </td>*@
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.PrecoProduto)
             </td>
@@ -39,3 +36,5 @@
     }
 
 </table>
+
+@Html.ActionLink("Retornar para relatório", "Index", "Administrativo")

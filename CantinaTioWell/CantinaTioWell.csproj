@@ -201,6 +201,7 @@
     <Content Include="Views\Produtos\ListaProdutosComprados.cshtml" />
     <Content Include="Views\Login\Relatorio.cshtml" />
     <Content Include="Views\Administrativo\Index.cshtml" />
+    <Content Include="Views\Administrativo\ListaClienteEProdutoEspecificoComDivida.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

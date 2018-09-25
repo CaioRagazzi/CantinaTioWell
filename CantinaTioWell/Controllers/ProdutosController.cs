@@ -19,12 +19,24 @@ namespace CantinaTioWell.Controllers
 
         public ActionResult Index()
         {
+            //Verifica se usuário está logado
             if (Session["user"] != null)
             {
+                //Verifica perfil do usuário
+                HttpCookie cookie = Request.Cookies.Get("MyCookie");
+                int IdUsuario = Convert.ToInt32(cookie.Value);
+                if (db.Clientes.Find(IdUsuario).Perfil == 1)
+                {
+                    bool adm = true;
+                    ViewBag.Perfil = adm;
+                }
+                else
+                {
+                    return RedirectToAction("Index","Compras");
+                }
                 bool logado = true;
                 ViewBag.Logado = logado;
-                bool adm = true;
-                ViewBag.Perfil = adm;
+                
                 return View(db.Produtoes.ToList());
             }
             else
