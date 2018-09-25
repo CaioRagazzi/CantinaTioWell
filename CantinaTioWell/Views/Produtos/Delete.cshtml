@@ -1,0 +1,40 @@
+﻿@model CantinaTioWell.Models.Produto
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Deletar</h2>
+
+<h3>Você tem certeza que deseja deletar esse produto?</h3>
+<div>
+    <h4>Produto</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.preco)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.preco)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Deletar" class="btn btn-default" /> |
+            @Html.ActionLink("Voltar para lista", "Index")
+        </div>
+    }
+</div>

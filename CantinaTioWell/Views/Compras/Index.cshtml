@@ -1,0 +1,43 @@
+﻿@model IEnumerable<CantinaTioWell.Models.Produto>
+
+@{
+    ViewBag.Title = "Comprar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Compras</h2>
+
+<h3>Selecione um produto para comprar</h3>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.preco)
+        </th>
+        @*<th>
+            Quantidade
+        </th>*@
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.preco)
+            </td>
+            @*<td>
+                @Html.TextBox("Quantidade")
+            </td>*@
+            <td>
+                @Html.ActionLink("Comprar", "Comprar", new { id = item.id })
+            </td>
+        </tr>
+    }
+</table>
+@Html.ActionLink("Minha Lista de Produtos Comprados", "ListaProdutosComprados", "Produtos")

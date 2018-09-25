@@ -1,0 +1,38 @@
+﻿@model IEnumerable<CantinaTioWell.Models.ClienteCompra>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Módulo administrativo</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Cliente
+        </th>
+        <th>
+            Produto
+        </th>
+        <th>
+            Valor
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomeCliente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomeProduto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrecoProduto)
+            </td>
+        </tr>
+    }
+
+</table>

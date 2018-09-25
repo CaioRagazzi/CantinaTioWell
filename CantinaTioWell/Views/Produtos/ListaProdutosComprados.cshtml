@@ -1,0 +1,46 @@
+﻿@model IEnumerable<CantinaTioWell.Models.ProdutoCompra>
+
+@{
+    ViewBag.Title = "ListaProdutosComprados";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Lista de Produtos Comprados</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Nome
+        </th>
+        <th>
+            Preço
+        </th>
+        <th>
+            Data da Compra
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.NomeProduto
+            </td>
+            <td>
+                @item.PrecoProduto
+            </td>
+            <td>
+                @item.DataCompra
+            </td>
+            <td>
+                @Html.ActionLink("Pagar", "Excluir", "Compras", new { IdCompra = item.IdCompra }, null)
+            </td>
+        </tr>
+    }
+    @Html.Label("Total da dívida: ")
+    @Model.Sum(x => x.PrecoProduto)
+</table>
+
+@Html.ActionLink("Retornar para lista de produtos", "Index", "Compras")
+
