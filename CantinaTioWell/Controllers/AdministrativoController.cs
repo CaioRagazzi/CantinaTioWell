@@ -46,11 +46,6 @@ namespace CantinaTioWell.Controllers
             bool perfil = true;
             ViewBag.Perfil = perfil;
 
-            //var clientes = from cli in db.Clientes.ToList()
-            //               join comp in db.Compras.ToList() on cli.id equals comp.Cliente.id
-            //               join prod in db.Produtoes.ToList() on comp.Produto.id equals prod.id
-            //               select new { NomeCliente = cli.nome, NomeProduto = prod.nome, PrecoProduto = prod.preco };
-
             var clientes = from cli in db.Clientes.ToList()
                            join comp in db.Compras.ToList() on cli.id equals comp.Cliente.id
                            join prod in db.Produtoes.ToList() on comp.Produto.id equals prod.id
@@ -65,7 +60,6 @@ namespace CantinaTioWell.Controllers
                 {
                     IdCliente = item.IdCliente,
                     NomeCliente = item.NomeCliente,
-                    //NomeProduto = item.NomeProduto,
                     PrecoProduto = item.Preco
                 });
             }
