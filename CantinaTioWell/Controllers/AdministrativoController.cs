@@ -68,8 +68,6 @@ namespace CantinaTioWell.Controllers
                     PrecoProduto = item.Preco
                 });
             }
-
-
             return View("Index", cc);
         }
 
@@ -84,7 +82,7 @@ namespace CantinaTioWell.Controllers
                            join comp in db.Compras.ToList() on cli.id equals comp.Cliente.id
                            join prod in db.Produtoes.ToList() on comp.Produto.id equals prod.id
                            where cli.id == id
-                           select new { IdCliente = cli.id ,NomeCliente = cli.nome, NomeProduto = prod.nome, PrecoProduto = prod.preco };
+                           select new { IdCliente = cli.id, NomeCliente = cli.nome, NomeProduto = prod.nome, PrecoProduto = prod.preco };
 
             List<ClienteCompra> cc = new List<ClienteCompra>();
 
@@ -99,7 +97,6 @@ namespace CantinaTioWell.Controllers
                 });
             }
 
-
             return View("ListaClienteEProdutoEspecificoComDivida", cc);
         }
 
@@ -110,15 +107,25 @@ namespace CantinaTioWell.Controllers
                            join comp in db.Compras.ToList() on cli.id equals comp.Cliente.id
                            join prod in db.Produtoes.ToList() on comp.Produto.id equals prod.id
                            where cli.id == id
-                           select new { IdCliente = cli.id, NomeCliente = cli.nome, NomeProduto = prod.nome, PrecoProduto = prod.preco, EmailCliente = cli.email };
+                           select new { IdCliente = cli.id, NomeCliente = cli.nome, NomeProduto = prod.nome, PrecoProduto = prod.preco, EmailCliente = cli.email};
+
+            string produtos = "";
+            decimal valorTotal = 0;
+
+            foreach (var item in clientes)
+            {
+                produtos += item.NomeProduto + " - ";
+                valorTotal += item.PrecoProduto;
+            }
 
             //Instância classe email
             MailMessage mail = new MailMessage();
-            mail.To.Add(clientes.First().EmailCliente); 
+            mail.To.Add(clientes.First().EmailCliente);
             mail.From = new MailAddress("cantinadotiowell@gmail.com");
             mail.Subject = "Cobrança da Cantina do Tio Well";
 
-            mail.Body = $"Olá {clientes.First().NomeCliente}, esté é um e-mail da Cantina Do Tio Well, informamos que você possui dívidas conosco, favor ajustar.";
+            mail.Body = $"Olá {clientes.First().NomeCliente}, esté é um e-mail da Cantina Do Tio Well, informamos que você possui dívidas conosco. Os seguintes produtos: {produtos}." +
+                $"O total da sua dívida é: {valorTotal}";
 
             mail.IsBodyHtml = true;
 

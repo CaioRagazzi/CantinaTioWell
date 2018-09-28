@@ -17,7 +17,6 @@ namespace CantinaTioWell.Models
             set { Id = value; }
         }
 
-        [Required(ErrorMessage = "Obrigatório")]
         private string Nome;
 
         public string nome
@@ -26,7 +25,6 @@ namespace CantinaTioWell.Models
             set { Nome = value; }
         }
 
-        [Required(ErrorMessage = "Obrigatório")]
         private string Email;
 
         public string email
@@ -44,7 +42,6 @@ namespace CantinaTioWell.Models
             set { Telefone = value; }
         }
 
-        [Required(ErrorMessage = "Obrigatório")]
         private string Cpf;
 
         public string cpf
@@ -53,7 +50,6 @@ namespace CantinaTioWell.Models
             set { Cpf = value; }
         }
 
-        [Required(ErrorMessage = "Obrigatório")]
         private string senha;
 
         public string Senha
@@ -62,7 +58,6 @@ namespace CantinaTioWell.Models
             set { senha = value; }
         }
 
-        [Required(ErrorMessage = "Obrigatório")]
         private int idPerfil;
 
         public int Perfil
