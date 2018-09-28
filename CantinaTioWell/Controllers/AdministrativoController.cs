@@ -14,6 +14,7 @@ namespace CantinaTioWell.Controllers
 
         public ActionResult Index()
         {
+            
             //Verifica se usuário está logado
             if (Session["user"] != null)
             {
