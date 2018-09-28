@@ -125,7 +125,7 @@ namespace CantinaTioWell.Controllers
             mail.Subject = "Cobrança da Cantina do Tio Well";
 
             mail.Body = $"Olá {clientes.First().NomeCliente}, esté é um e-mail da Cantina Do Tio Well, informamos que você possui dívidas conosco. Os seguintes produtos: {produtos}." +
-                $"O total da sua dívida é: {valorTotal}";
+                $"O total da sua dívida é: {valorTotal}.";
 
             mail.IsBodyHtml = true;
 
